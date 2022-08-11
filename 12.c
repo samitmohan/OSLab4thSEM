@@ -1,12 +1,3 @@
-// Step 1. Start to traverse the pages.
-// Step 2. If the memory holds fewer pages, then the capacity else goes to step 5.
-// Step 3. Push pages in the queue one at a time until the queue reaches its maximum capacity or all page requests are fulfilled.
-// Step 4. If the current page is present in the memory, do nothing.
-// Step 5. Else, pop the topmost(FIFO) page from the queue as it was inserted first.
-// Step 6. Replace the topmost page with the current page from the string.
-// Step 7. Increment the page faults. (FAULT)
-// Step 8. Stop
-
 #include <stdio.h>
 int main()
 {

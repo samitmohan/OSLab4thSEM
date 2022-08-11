@@ -107,6 +107,7 @@ void cal()
             }
         }
     }
+    // check for dead state
     j = 0;
     flag = 0;
     for (i = 0; i < n; i++)
@@ -118,6 +119,7 @@ void cal()
             flag = 1;
         }
     }
+    // if still in dl
     if (flag == 1)
     {
         printf("System is in DL");

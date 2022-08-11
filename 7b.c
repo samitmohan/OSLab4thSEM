@@ -6,7 +6,6 @@ int main()
     float wtavg, tatavg;
     printf("Enter number of processes : ");
     scanf("%d", &n);
-    scanf("%d", &n);
     for (i = 0; i < n; i++)
     {
         printf("Enter BT for process %d", i);

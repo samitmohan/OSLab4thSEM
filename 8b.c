@@ -2,7 +2,7 @@
 #include <stdio.h>
 int main()
 {
-    int temp, n, job[10], bt[10], priority[10], wt[10], tat[10], avgwt, avgtat, i;
+    int temp, n, p[10], bt[10], priority[10], wt[10], tat[10], avgwt, avgtat, i;
     printf("Enter process : ");
     scanf("%d", &n);
     printf("Enter process(BT) : time priority : ");
@@ -10,7 +10,7 @@ int main()
     {
         printf("Process no %d", i + 1);
         scanf("%d %d", &bt[i], &priority[i]);
-        job[i] = i + 1;
+        p[i] = i + 1;
     }
 
     for (i = 0; i < n; i++)
@@ -44,7 +44,7 @@ int main()
     printf("\n \n Job \t BT \t WT \t TAT \t Priority \n");
     for (i = 0; i < n; i++)
     {
-        printf("\n %d \t \t %d \t \t %d \t \t %d \t \t %d \n", job[i], bt[i], wt[i], tat[i], priority[i]);
+        printf("\n %d \t \t %d \t \t %d \t \t %d \t \t %d \n", p[i], bt[i], wt[i], tat[i], priority[i]);
     }
     avgwt = (float)avgwt / n;
     avgtat = (float)avgtat / n;

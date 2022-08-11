@@ -1,53 +1,42 @@
+// Page fault
 #include <stdio.h>
 int main()
 {
-    int referenceString[10], pageFaults = 0, i, j, s, pages, frames;
-    printf(" Enter the number of Pages: ");
-    scanf("%d", &pages);
-    printf("Enter reference string values: ");
-    for (i = 0; i < pages; i++)
+    int i, hit, no_of_pages, refString[50], frame[10], no_of_frames, j, avail, pageFaults = 0;
+    printf("\n Enter number of pages : ");
+    scanf("%d", &no_of_pages);
+    // Reading the reference string
+    printf("\n Enter page number:\n");
+    for (i = 1; i <= no_of_pages; i++)
+        scanf("%d", &refString[i]);
+    printf("\n Enter number of frames :  :");
+    scanf("%d", &no_of_frames);
+    // Initially all frames are empty: here empty denotes -1
+    for (i = 0; i < no_of_frames; i++)
+        frame[i] = -1;
+    hit = 0;
+    printf("\t Ref String \t Page Frames\n");
+    // iterating through the reference string
+    for (i = 1; i <= no_of_pages; i++)
     {
-        printf("Value %d:", i + 1);
-        scanf("%d", &referenceString[i]);
-    }
-
-    printf("\n Total number of frames: ");
-    scanf("%d", &frames);
-    int temp[frames]; // temp arr of same frame number
-
-    for (i = 0; i < frames; i++)
-    {
-        temp[i] = -1; // all -1 initially
-    }
-
-    for (i = 0; i < pages; i++)
-    {
-        s = 0; // hits
-        for (j = 0; j < frames; j++)
+        printf("%d \t \t", refString[i]);
+        avail = 0;
+        // Finding whether the current page is present in memory frame, avail set to one if present in memory frame
+        for (j = 0; j < no_of_frames; j++)
+            if (frame[j] == refString[i])
+                avail = 1;
+        // avail = 0 if page not present in memory frame in that case replace the
+        // first page which was allocated in a frame and increment page fault (FIFO)
+        if (avail == 0)
         {
-            if (referenceString[i] == temp[j]) // hit
-            {
-                s++;          // hit++
-                pageFaults--; // fault less
-            }
+            frame[hit] = refString[i];
+            hit = (hit + 1) % no_of_frames;
+            pageFaults++;
+            for (j = 0; j < no_of_frames; j++)
+                printf("%d\t", frame[j]);
         }
-        pageFaults++; // else increase page fault
-
-        if ((pageFaults <= frames) && (s == 0)) // 0 hits
-        {
-            temp[i] = referenceString[i]; // keep doing it
-        }
-        else if (s == 0) // replacement time
-        {
-            temp[(pageFaults - 1) % frames] = referenceString[i]; // new ref string (FIFO) (remove top % size)
-        }
-
         printf("\n");
-        for (j = 0; j < frames; j++) // print all frame
-        {
-            printf("%d\t", temp[j]);
-        }
     }
-    printf("\nTotal Page Faults: %d", pageFaults);
+    printf("Page Fault Is %d", pageFaults);
     return 0;
 }

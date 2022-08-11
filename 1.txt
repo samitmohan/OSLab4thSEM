@@ -1,0 +1,19 @@
+OS COMMANDS
+
+1. echo -> displays string passed to echo
+2. pwd -> shows present working directory
+3. mkdir -> make new directory
+4. rmdir -> remove directory
+5. cd -> change directory
+6. cat -> reads data from file and gives that content as output
+7. ls -> displays directory
+8. ls -l -> gives long information
+9. ps -> shows current running process
+10. who -> to find -> time, current user and logged list
+11. whoami -> shows current user
+12. date -> displays current date
+13. cal -> displays calender of current month
+14. cp -> copy the content of one file to another
+15. rm -> remove a particular file
+16. mv -> move / rename a file
+17. cat > file.txt -> creates a file (file.txt) and enters the content
